@@ -1,0 +1,22 @@
+#thumbnails {
+    width: 408px;
+}
+
+.thumb {
+    /*border: 1px solid black;*/
+    padding: 2px;
+    width: 200px;
+    height: 200px;
+    float: left;
+
+    line-height: 200px; /* or whatever you want, should match height */
+    text-align: center;
+}
+
+.thumb img {
+    vertical-align: middle;
+}
+
+#footer {
+    clear: both;
+}
