@@ -23,7 +23,11 @@ public class ImageScanServlet extends HttpServlet
     private Set<WebImage> imagesCache;
 
     private static String getBackLink(String text) {
-        return "<a href=\"/task.html\">" + text + "</a>";
+        return "<a href=\"/task.jsp\">" + text + "</a>";
+    }
+
+    public static String something() {
+        return "123";
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
@@ -41,14 +45,14 @@ public class ImageScanServlet extends HttpServlet
         out.println("</head>");
 
         out.println("<body>");
-        out.println("<h2>" + getBackLink("ImageScan")+ "</h2>");
+        out.println("<h2>ImageScan</h2>");
         try {
             URL url = new URL(request.getParameter("url"));
 
             Document doc = Jsoup.connect(url.toString()).get();
             Elements images = doc.select("img");
 
-            out.println("showing images from " + request.getParameter("url"));
+            out.println(request.getParameter("url") + " " + getBackLink("&#128281;"));
 
             //out.println("<p>Images from url:</p>");
 
