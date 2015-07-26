@@ -147,11 +147,11 @@ public class ImageScanServlet extends HttpServlet
             }
         }
 
-        // начинаем обработку следующих изображений
-        startProcessMoreThumbnails(imagesCache);
-
         // выводим на экран, что уже готово
         processed = this.printThumbnails(imagesCache, out);
+
+        // начинаем обработку следующих изображений
+        startProcessMoreThumbnails(imagesCache);
 
         // если нужно, выводим ссылку "подгрузить еще"
         if (processed < imagesCache.size()) {
@@ -169,12 +169,14 @@ public class ImageScanServlet extends HttpServlet
         int count = 0;
         synchronized (executorService) {
             for (WebImage webImage : imagesCache) {
-                if (webImage.getThumbnail() == null) {
-                    executorService.execute(new WebImageResizeJob(webImage));
-                    count++;
-                }
-                if (count >= MORE_NUMBER_OF_THUMBNAILS) {
-                    break;
+                synchronized (webImage) {
+                    if (webImage.getThumbnail() == null) {
+                        executorService.execute(new WebImageResizeJob(webImage));
+                        count++;
+                    }
+                    if (count >= MORE_NUMBER_OF_THUMBNAILS) {
+                        break;
+                    }
                 }
             }
         }
