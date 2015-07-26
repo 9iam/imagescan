@@ -41,26 +41,6 @@ public class WebImage {
     }
 
     /**
-     * Загружаем по урлу из absUrl в массив байт
-     * @deprecated использовать downloadBufferedImage
-     */
-    @Deprecated
-    public void downloadSrc() throws IOException {
-        URL url = new URL(this.getAbsUrl());
-        InputStream in = url.openStream();
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
-
-        for (int b; (b = in.read()) != -1;) {
-            out.write(b);
-        }
-
-        out.close();
-        in.close();
-
-        this.setSrcBytes(out.toByteArray());
-    }
-
-    /**
      * загружаем избражение по урлу absUrl в BufferedImage
      * @throws IOException
      */
