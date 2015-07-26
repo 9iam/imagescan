@@ -1,4 +1,7 @@
-<h2>ImageScan</h2>
+<!DOCTYPE HTML>
+<HEAD>
+<TITLE>ImageScan</TITLE>
+</HEAD>
+<BODY>
 <%@include file="form.jsp" %>
-<%--<%@ page import="org.example.ImageScanServlet" %>
-<%= ImageScanServlet.something() %>--%>
+</BODY>
