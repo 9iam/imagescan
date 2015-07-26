@@ -32,7 +32,7 @@ public class ImageScanServlet extends HttpServlet
 
     // один пул потоков для всех пользователей
     private final int corePoolSize = 4;
-    private final int maximumPoolSize = 8;
+    private final int maximumPoolSize = 16;
     int keepAliveTime = 5000;
     private final ExecutorService executorService = new ThreadPoolExecutor(corePoolSize, maximumPoolSize,
             keepAliveTime, TimeUnit.MILLISECONDS,
@@ -43,7 +43,7 @@ public class ImageScanServlet extends HttpServlet
      * @return
      */
     private static String getBackLink(String labelText) {
-        return "<a href=\"/task.jsp\">" + labelText + "</p>";
+        return "<a href=\"/task.jsp\">" + labelText + "</a>";
     }
 
     /**
